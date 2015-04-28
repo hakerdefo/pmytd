@@ -32,13 +32,13 @@ $ sudo chmod a+x /usr/local/bin/youtube-dl
 
 ### Installation :
 
-Download pmytd and copy it to '/usr/bin/' directory,
+Download pmytd and copy it to '/usr/local/bin/' directory,
 ```sh
-$ sudo cp pmytd /usr/bin/
+$ sudo cp pmytd /usr/local/bin/
 ```
 Next make it executable,
 ```sh
-$ sudo chmod a+x /usr/bin/pmytd
+$ sudo chmod a+x /usr/local/bin/pmytd
 ```
 
 
