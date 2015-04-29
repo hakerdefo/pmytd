@@ -32,7 +32,7 @@ $ sudo chmod a+x /usr/local/bin/youtube-dl
 
 ### Installation :
 
-Download [pmytd] zip file, extract it's contents and copy 'pmytd' file to '/usr/local/bin/' directory,
+Download [pmytd-master] zip, extract it's contents and copy 'pmytd' file to '/usr/local/bin/' directory,
 ```sh
 $ sudo cp pmytd /usr/local/bin/
 ```
@@ -65,4 +65,4 @@ This work (<span property="dct:title">pmytd</span>, by [<span property="dct:titl
 [youtube-dl]:http://rg3.github.io/youtube-dl/
 [python]:https://www.python.org
 [FFmpeg]:https://ffmpeg.org/
-[pmytd]:https://github.com/hakerdefo/pmytd/archive/master.zip
+[pmytd-master]:https://github.com/hakerdefo/pmytd/archive/master.zip
