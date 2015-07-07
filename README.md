@@ -3,8 +3,7 @@ pmytd (Poor Man's Youtube Downloader) is a simple bash front end to youtube-dl.
 
 pmytd can,
 
-  - Download videos from youtube and other video sharing
-websites.
+  - Download videos from youtube and other video sharing websites.
   - Download and extract audio (mp3) from videos on youtube and other video sharing websites.
   - Download entire youtube playlists (video and audio).
 
@@ -18,7 +17,7 @@ You can view the list of all websites from which pmytd can download video(s) her
 
 pmytd needs to have following applications installed in order to function,
 
-* [youtube-dl] - Small command-line program to download videos from YouTube.com and other video sites. youtube-dl is available in repos of some distros but chances are that version is severly outdated. Here is the right way to install it. Open terminal and run following commands,
+* [youtube-dl] - Small command-line program to download videos from YouTube.com and other video sharing websites. youtube-dl is available in repos of some distributions but available version most likely would be severly outdated. Here is the right way to install it. Open terminal and run following commands,
 ```sh
 $ sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl
 ```
@@ -44,12 +43,12 @@ $ sudo chmod a+x /usr/local/bin/pmytd
 
 ### Usage :
 
-Open terminal, run pmytd, enjoy.
+Open terminal, run pmytd, feed it a video link, enjoy.
 
 
 ### Update :
 
-Youtube and other video sharing sites continually change their APIs. So it is advised to keep youtube-dl updated to latest version. You can check for youtube-dl updates via 'Check for update' option in pmytd menu. If there is a newer version available then you can update youtube-dl by running following command in terminal,
+Youtube and other video sharing sites continually change their APIs. So it is advised to keep youtube-dl updated to latest version. You can check for youtube-dl updates via 'Check for updates' option in pmytd menu. If there is a newer version available then you can update youtube-dl by running following command in terminal,
 ```sh
 $ sudo youtube-dl -U
 ```
