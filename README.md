@@ -26,6 +26,8 @@ $ sudo chmod a+x /usr/local/bin/youtube-dl
 ```
 * [python] - Python is a widely used general-purpose, high-level programming language. Python should most likely be installed by default on most linux distributions. If it is not installed please use your distro's package manager and install it.
 * [FFmpeg] - A complete, cross-platform solution to record, convert and stream audio and video. Again ffmpeg should already be installed by default on most distros. If not install it via your distro's package manager. In some distros it is called avconv. ffprobe or avprobe are also required.
+* curl - [curl] is a command line tool and library for transferring data with URL syntax. curl is available in repositories of almost every Linux distribution so you can install curl easily via your package manager.
+* ping - ping uses the ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an ICMP ECHO_RESPONSE from a host or gateway. ping is part of [iputils] package. Install iputils via your package manager.
 * Downloads Directory - pmytd is hard-wired to download video and audio to the Downloads directory under user's home directory. Downloads directory should already be there by default but just in case make sure you have Downloads directory under your home folder.
 
 
@@ -64,4 +66,6 @@ This work (<span property="dct:title">pmytd</span>, by [<span property="dct:titl
 [youtube-dl]:http://rg3.github.io/youtube-dl/
 [python]:https://www.python.org
 [FFmpeg]:https://ffmpeg.org/
+[curl]:http://curl.haxx.se
+[iputils]:http://www.skbuff.net/iputils/
 [pmytd-master]:https://github.com/hakerdefo/pmytd/archive/master.zip
