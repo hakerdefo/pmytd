@@ -50,10 +50,7 @@ Open terminal, run pmytd, feed it a video link, enjoy.
 
 ### Update :
 
-Youtube and other video sharing sites continually change their APIs. So it is advised to keep youtube-dl updated to latest version. You can check for youtube-dl updates via 'Check for updates' option in pmytd menu. If there is a newer version available then you can update youtube-dl by running following command in terminal,
-```sh
-$ sudo youtube-dl -U
-```
+Youtube and other video sharing sites continually change their APIs. So it is advised to keep youtube-dl updated to latest version. You can easily update youtube-dl via 'Check for updates' option in pmytd menu.
 
 
 ### License :
