@@ -1,95 +1,254 @@
 #!/bin/bash
 
-function Bye (){
+function ByE (){
 clear
-printf "%s\n" "" "Thanks.. Bye Bye.." ""
-sleep 2
+echo ""
+echo -e '\E[1;31;40m'"It's "'\E[1;32;40m'"funny "'\E[1;33;40m'" how"'\E[1;35;40m'" the"'\E[1;36;40m'" colors"'\E[1;31;40m'" of"'\E[1;32;40m'" the"'\E[1;33;40m'" real"'\E[1;35;40m'" world"'\E[1;36;40m'" only"'\E[1;31;40m'" seem"'\E[1;32;40m'" really"'\E[1;33;40m'" real"
+echo -e '\E[1;36;40m'"when "'\E[1;31;40m'"you "'\E[1;32;40m'"viddy "'\E[1;33;40m'"them "'\E[1;35;40m'"on "'\E[1;36;40m'"the "'\E[1;31;40m'"screen."
+echo ""
+echo -e '\e[0m'"Alex, A Clockwork Orange"
+echo ""
+sleep 4
 clear
 exit 0
 }
 
-function Update (){
-ytdllv=$(curl -sL -w "%{url_effective}\\n" "https://yt-dl.org/downloads/latest/" -o /dev/null | tail -c-12 | sed 's/[/]//g')
-ytdlcv=$(youtube-dl --version)
-printf "%s\n" "" "Installed version of youtube-dl is - $ytdlcv" "" "Latest available version of youtube-dl is - $ytdllv" "" "Press 'q' to return to PMYTD MENU" "" | less
+function HelP (){
+clear
+printf "%s\n" "" "Having problems running PMYTD?" "" "First make sure you have all the required dependencies installed." "You can read more about it in 'Dependencies of PMYTD' option" "in PMYTD MENU." "" "Having problems downloading videos?" "" "Youtube and other video sharing sites continually change their APIs." "So it is advised to keep youtube-dl updated to latest version." "You can check for youtube-dl updates via 'Check for updates' option" "in PMYTD MENU." "If there is a newer version available then please update youtube-dl." "" "For any other queries you can contact me at," "http://hakerdefo.blogspot.com" "" "Press 'q' to return to PMYTD MENU" "" | less
 }
 
-function Apls(){
+function UpdatE (){
+clear
+ping -q -c 2 yt-dl.org >/dev/null 2>&1 || { clear; echo -e "Can't connect to youtube-dl server! Please try later!" >&2; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key; MenU; }
+ytdllv=$(curl -sL -w "%{url_effective}\\n" "https://yt-dl.org/downloads/latest/" -o /dev/null | tail -c-12 | sed 's/[/]//g')
+ytdlcv=$(youtube-dl --version)
+if [ "$ytdllv" == "$ytdlcv" ]; then
+echo ""
+echo -e "Installed version of youtube-dl - $ytdlcv"
+echo -e "Available version of youtube-dl - $ytdllv"
+echo ""
+echo -e "youtube-dl is up-to-date."
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
+else
+echo ""
+echo -e "Installed version of youtube-dl - $ytdlcv"
+echo -e "Available version of youtube-dl - $ytdllv"
+echo ""
+echo -e "youtube-dl update is available."
+echo ""
+echo -e "Would you like to update youtube-dl?"
+echo ""
+echo -e "01 Update youtube-dl"
+echo -e "02 Return to PMYTD MENU"
+echo ""
+echo -e "Enter your choice: "
+echo ""
+read choice
+case $choice in
+1 | 01)
+clear
+ytdll=$(which youtube-dl)
+if [ -w "$ytdll" ]; then
+youtube-dl -U
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
+else
+resu=$(whoami)
+resu_test=$(sudo -u "$resu" -n true >/dev/null 2>&1)
+if [[ -z "$resu_test" ]]; then
+echo ""
+echo -e "Please enter root password"
+echo ""
+su -c 'youtube-dl -U'
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
+else
+echo ""
+echo "Please enter password for user $resu"
+echo ""
+sudo youtube-dl -U
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
+fi
+fi
+;;
+2 | 02)
+clear
+MenU
+;;
+*)
+clear
+echo ""
+echo -e "$choice is an invalid option!"
+echo ""
+sleep 4
+UpdatE
+;;
+esac
+fi
+}
+
+function DiE(){
+clear
+echo ""
+echo -e "OOPS!!! Something Went Wrong!!!"
+echo -e "Please make sure '$link' exists."
+echo -e "Also make sure video is available."
+echo ""
+exit 1
+}
+
+function AplS(){
 clear
 printf "%s\n" "" "Enter the youtube playlist link: " ""
 read link
 clear
 youtube-dl --continue --yes-playlist --ignore-errors --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$link"
-exit 0
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
 }
 
-function Vpls(){
+function VplS(){
 clear
 printf "%s\n" "" "Enter the youtube playlist link: " ""
 read link
 clear
 youtube-dl --continue --yes-playlist --ignore-errors --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$link"
-exit 0
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
 }
 
-function Audio(){
+function AudiO(){
 clear
 printf "%s\n" "" "Enter the youtube video link: " ""
 read link
 clear
 youtube-dl --continue --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$link"
-exit 0
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
 }
 
-function Format(){
+function FormaT(){
 clear
 printf "%s\n" "" "Enter the youtube video link: " ""
 read link
 clear
-youtube-dl --list-formats "$link"
+youtube-dl --list-formats "$link" || DiE
 printf "%s\n" "" "Enter your desired video format code from the above list:" ""
 read list
 clear
 youtube-dl --continue --format "$list" --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$link"
-exit 0
+echo ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
+echo ""
+clear
+MenU
 }
 
-function Dependencies(){
-printf "%s\n" "PMYTD needs to have following applications installed in order to function," "" "1. youtube-dl" "A small command-line program to download videos from youtube and other" "video sharing sites. It is available in repos of some distros but it" "would most likely be severly outdated. Here is the right way to install it," "Open terminal and run following commands," "'sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O " "/usr/local/bin/youtube-dl'" "'sudo chmod a+x /usr/local/bin/youtube-dl'" "" "youtube-dl homepage -> https://rg3.github.io/youtube-dl/" "" "2. Python" "Python should most likely be installed by default on your system." "If not install it via your distro's package manager." "" "Python homepage -> http://python.org" "" "3. FFmpeg" "Again ffmpeg should already be installed by default on most distros." "If not install it via your distro's package manager." "In some distros it is called avconv. ffprobe or avprobe are also required." "" "FFmpeg homepage -> https://www.ffmpeg.org/" "" "4. Downloads directory" "PMYTD is hard-wired to download video and audio to the Downloads directory" "under user's home directory." "Downloads directory should already be there by default but just in case make" "sure you have Downloads directory under your home folder." "" "Press 'q' to return to PMYTD MENU" "" | less
+function DependencieS(){
+clear
+printf "%s\n" "" "PMYTD needs to have following applications installed in order to function," "" "1. youtube-dl" "A small command-line program to download videos from youtube and other" "video sharing sites. It is available in repos of some distros but it" "would most likely be severly outdated. Here is the right way to install it," "Open terminal and run following commands," "'sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O " "/usr/local/bin/youtube-dl'" "'sudo chmod a+x /usr/local/bin/youtube-dl'" "" "youtube-dl homepage -> https://rg3.github.io/youtube-dl/" "" "2. Python" "Python should most likely be installed by default on your system." "If not install it via your distro's package manager." "" "Python homepage -> http://python.org" "" "3. FFmpeg" "Again ffmpeg should already be installed by default on most distros." "If not install it via your distro's package manager." "In some distros it is called avconv. ffprobe or avprobe are also required." "" "FFmpeg homepage -> https://www.ffmpeg.org/" "" "4. cURL" "curl is an open source command line tool and library for transferring data" "with URL syntax, supporting DICT, FILE, FTP, FTPS, Gopher, HTTP, HTTPS, IMAP," "IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, RTSP, SCP, SFTP, SMB, SMTP, SMTPS," "Telnet and TFTP." "You can easily install it using your package manager." "" "cURL homepage -> http://curl.haxx.se/" "" "5. Ping" "ping uses the ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an" "ICMP ECHO_RESPONSE from a host or gateway." "ping is part of iputils package. Install iputils via your package manager." "" "iputils homepage -> http://www.skbuff.net/iputils/" "" "6. Downloads directory" "PMYTD is hard-wired to download video and audio to the Downloads directory" "under user's home directory." "Downloads directory should already be there by default but just in case make" "sure you have Downloads directory under your home folder." "" "Press 'q' to return to PMYTD MENU" "" | less
 }
 
-function About(){
-printf "%s\n" "PMYTD is a simple script that can," "" "1. Download videos from youtube and other video sharing
-websites." "2. Download and extract audio [mp3] from videos on youtube" "and other video sharing websites." "3. Download entire youtube playlists (video and audio)." "" "" "PMYTD is just a helper script for Ricardo Garcia's wonderful" "youtube-dl." "You can view the list of all supported video sharing websites here," "http://rg3.github.io/youtube-dl/supportedsites.html" "" "Youtube and other video sharing sites continually change their APIs." "So it is advised to keep youtube-dl updated to latest version." "You can check for youtube-dl updates via 'Check for updates' option" "in PMYTD MENU." "If there is a newer version available then you can update youtube-dl" "by running following command in terminal," "'sudo youtube-dl -U'" "" "By the way PMYTD means Poor Man's YouTube Downloader. PMYTD is" "available under CC0 1.0 Universal licesense." "Got any question-suggestion? Please visit," "http://hakerdefo.blogspot.in/" "" "Press 'q' to return to PMYTD MENU" "" | less
+function AbouT(){
+clear
+printf "%s\n" "" "PMYTD is a simple script that can," "" "1. Download videos from youtube and other video sharing
+websites." "2. Download and extract audio [mp3] from videos on youtube" "and other video sharing websites." "3. Download entire youtube playlists (video and audio)." "" "" "PMYTD is just a helper script for Ricardo Garcia's wonderful" "youtube-dl." "You can view the list of all supported video sharing websites here," "http://rg3.github.io/youtube-dl/supportedsites.html" "" "By the way PMYTD means Poor Man's YouTube Downloader. PMYTD is" "available under CC0 1.0 Universal licesense." "Got any question-suggestion? Please visit," "http://hakerdefo.blogspot.in/" "" "Press 'q' to return to PMYTD MENU" "" | less
+}
+
+function MenU(){
+clear
+echo ""
+echo -e "PMYTD MENU"
+echo ""
+echo -e "01 About PMYTD"
+echo -e "02 Dependencies of PMYTD"
+echo -e "03 Download a video"
+echo -e "04 Download & extract audio from video"
+echo -e "05 Download entire youtube playlist"
+echo -e "06 Download & extract audio from playlist"
+echo -e "07 Check for updates"
+echo -e "08 Help"
+echo -e "09 Quit PMYTD"
+echo ""
+echo -e "Enter your choice: "
+echo ""
+read choice
+case $choice in
+
+01 | 1)
+AbouT
+;;
+
+02 | 2)
+DependencieS
+;;
+
+03 | 3)
+FormaT
+;;
+
+04 | 4)
+AudiO
+;;
+
+05 | 5)
+VplS
+;;
+
+06 | 6)
+AplS
+;;
+
+07 | 7)
+UpdatE
+;;
+
+08 | 8)
+HelP
+;;
+
+09 | 9)
+ByE
+;;
+
+*)
+clear
+echo ""
+echo -e "$choice is an invalid option!"
+echo ""
+sleep 4
+;;
+
+esac
 }
 
 while :
 do
-clear
-cat << !
-PMYTD MENU
 
-1. About PMYTD
-2. Dependencies of PMYTD
-3. Download a video
-4. Download & extract audio from video
-5. Download entire youtube playlist
-6. Download & extract audio from playlist
-7. Check for updates
-8. Quit PMYTD
+MenU
 
-!
-echo -n "Enter your choice: "
-read choice
-case $choice in
-1) About ;;
-2) Dependencies ;;
-3) Format ;;
-4) Audio ;;
-5) Vpls ;;
-6) Apls ;;
-7) Update ;;
-8) Bye ;;
-*) clear; printf "%s\n" "\"$choice\" is an invalid option!"; sleep 3;;
-esac
 done
