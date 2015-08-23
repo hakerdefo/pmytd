@@ -21,7 +21,7 @@ printf "%s\n" "" "Having problems running PMYTD?" "" "First make sure you have a
 function UpdatE (){
 clear
 ping -q -c 2 yt-dl.org >/dev/null 2>&1 || { clear; echo -e "Can't connect to youtube-dl server! Please try later!" >&2; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key; MenU; }
-ytdllv=$(curl -sL -w "%{url_effective}\\n" "https://yt-dl.org/downloads/latest/" -o /dev/null | tail -c-12 | sed 's/[/]//g')
+ytdllv=$(curl -sL -w "%{url_effective}\\n" "https://yt-dl.org/downloads/latest/" -o /dev/null | cut -c 29- | sed 's/[/]//g')
 ytdlcv=$(youtube-dl --version)
 if [ "$ytdllv" == "$ytdlcv" ]; then
 echo ""
@@ -62,18 +62,6 @@ clear
 MenU
 else
 resu=$(whoami)
-resu_test=$(sudo -u "$resu" -n true >/dev/null 2>&1)
-if [[ -z "$resu_test" ]]; then
-echo ""
-echo -e "Please enter root password"
-echo ""
-su -c 'youtube-dl -U'
-echo ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
-echo ""
-clear
-MenU
-else
 echo ""
 echo "Please enter password for user $resu"
 echo ""
@@ -83,7 +71,6 @@ read -rsp $'Press any key to return to PMYTD MENU...\n' -n1 key
 echo ""
 clear
 MenU
-fi
 fi
 ;;
 2 | 02)
