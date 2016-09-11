@@ -14,6 +14,20 @@ exit 0
 }
 
 function HelP (){
+printf "\033c"
+type less >/dev/null 2>&1
+RETVAL=$?
+if [[ ! "$RETVAL" == 0 ]]; then
+printf "\033c"
+echo -e ""
+echo -e "PMYTD requires file pager \"less\" to display HELP document"
+echo -e "Please install the package \"less\" via the package manager"
+echo -e "For more information on \"less\" please visit it's homepage"
+echo -e "http://www.greenwoodsoftware.com/less/"
+echo -e ""
+read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+MenU
+fi
 printf "%s\n" "Having problems downloading videos?" "" "YouTube and other video sharing sites" "continually change their APIs so it's" "advised to keep youtube-dl updated to" "the latest available version. You can" "check for updates from the PMYTD MENU" "by running 'Check for updates' option" "" "" "Is YouTube the only supported site?" "" "PMYTD is built with YouTube in mind" "So at present PMYTD is YouTube only" "" "" "Why can't I get videos in 4K-1080P?" "" "If your system doesn't have either," "FFmpeg or Libav installed you won't" "be able to download videos in their" "highest available resolutions. 720P" "is the highest resolution available" "without FFmpeg or Libav. To be able" "to download videos in 4K-1080P, you" "need to open your package manager &" "install either the package 'ffmpeg'" "or the package 'libav-tools'. There" "is no need to install both of these" "packages. Hint : We prefer 'ffmpeg'" "" "" "Why can't I play my 4K-1080P video?" "" "You will need a decent computer for" "playing 4K-1080P videos. Check that" "your hardware is capable of playing" "4K-1080P videos. If the hardware is" "adequate then make sure that driver" "for the graphics card is up-to-date" "Also you'll need a good software to" "play 4K-1080P videos. We prefer mpv" "on Linux, MPC-HC on Windows and mpv" "on OS X. In our experience mplayer2" "and VLC both have issues on playing" "4K-1080P videos copied from YouTube" "" "" "Press 'q' to return to PMYTD MENU" "" | less -RM
 MenU
 }
@@ -192,6 +206,8 @@ if [[ "$RETVAL" == 0 ]]; then
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format bestaudio/best --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Audio download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
 echo -e ""
+echo -e "Successfully completed the download task"
+echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
 else
@@ -254,12 +270,16 @@ if [[ ! "$RETVAL" == 0 ]]; then
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
 echo -e ""
+echo -e "Successfully completed the download task"
+echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
 fi
 fi
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format bestvideo+bestaudio/best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+echo -e ""
+echo -e "Successfully completed the download task"
 echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
@@ -349,6 +369,8 @@ if [[ "$RETVAL" == 0 ]]; then
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format bestaudio/best --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Audio download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
 echo -e ""
+echo -e "Successfully completed the download task"
+echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
 else
@@ -412,12 +434,16 @@ if [[ ! "$RETVAL" == 0 ]]; then
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
 echo -e ""
+echo -e "Successfully completed the download task"
+echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
 fi
 fi
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format bestvideo+bestaudio --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+echo -e ""
+echo -e "Successfully completed the download task"
 echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
@@ -429,6 +455,8 @@ printf "%s\n" "" "Enter your desired video format code from the above list: " ""
 read -r list
 printf "\033c"
 youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format "$list" --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+echo -e ""
+echo -e "Successfully completed the download task"
 echo -e ""
 read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
 MenU
