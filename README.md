@@ -7,6 +7,8 @@ pmytd can,
   - Download and extract HQ audio (320 kbps MP3) from YouTube videos.
   - Download entire YouTube video playlists in 4K and 1080P.
   - Download and extract HQ audio (320 kbps MP3) from YouTube playlists.
+  - Install youtube-dl if it's not available.
+  - Update youtube-dl to the latest version.
 
 
 ### pmytd Dependencies :
