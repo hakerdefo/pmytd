@@ -505,6 +505,7 @@ function MenU (){
     echo -e ""
     echo -e "*******************************************"
     echo -e "   Enter your choice: "
+    echo -e ""
     read -er choice
     case $choice in
     01 | 1)
