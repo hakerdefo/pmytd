@@ -1,636 +1,636 @@
 #!/usr/bin/env bash
 function ByE (){
-printf "\033c"
-echo -e ""
-echo -e '\E[1;31;40m'"It's "'\E[1;32;40m'"funny "'\E[1;33;40m'" how"'\E[1;35;40m'" the"'\E[1;36;40m'" colors"'\E[1;31;40m'" of"'\E[1;32;40m'" the"'\E[1;33;40m'" real"'\E[1;35;40m'" world"'\E[1;36;40m'" only"
-echo -e '\E[1;31;40m'"seem"'\E[1;32;40m'" really"'\E[1;33;40m'" real"'\E[1;36;40m'" when"'\E[1;31;40m'" you"'\E[1;32;40m'" viddy"'\E[1;33;40m'" them"'\E[1;35;40m'" on"'\E[1;36;40m'" the"'\E[1;31;40m'" screen"
-tput sgr0
-echo -e ""
-echo -e "Alex, A Clockwork Orange"
-sleep 4
-printf "\033c"
-exit 0
+    printf "\033c"
+    echo -e ""
+    echo -e '\E[1;31;49m'"It's "'\E[1;32;49m'"funny "'\E[1;33;49m'" how"'\E[1;35;49m'" the"'\E[1;36;49m'" colors"'\E[1;31;49m'" of"'\E[1;32;49m'" the"'\E[1;33;49m'" real"'\E[1;35;49m'" world"'\E[1;36;49m'" only"
+    echo -e '\E[1;31;49m'"seem"'\E[1;32;49m'" really"'\E[1;33;49m'" real"'\E[1;36;49m'" when"'\E[1;31;49m'" you"'\E[1;32;49m'" viddy"'\E[1;33;49m'" them"'\E[1;35;49m'" on"'\E[1;36;49m'" the"'\E[1;31;49m'" screen"
+    tput sgr0
+    echo -e ""
+    echo -e "Alex, A Clockwork Orange"
+    sleep 4
+    printf "\033c"
+    exit 0
 }
 function HelP (){
-printf "\033c"
-type less >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "PMYTD requires file pager \"less\" to display HELP document"
-echo -e "Please install the package \"less\" via the package manager"
-echo -e "For more information on \"less\" please visit it's homepage"
-echo -e "http://www.greenwoodsoftware.com/less/"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-printf "%s\n" "Having problems downloading videos?" "" "YouTube and other video sharing sites continually change their APIs so it's" "advised to keep youtube-dl updated to the latest available version. You can" "check for updates via the PMYTD MENU by running 'Check for updates' option." "" "" "Is YouTube the only supported site?" "" "PMYTD is built with YouTube in mind so at present it only supports YouTube." "" "" "Why can't I get videos in 4K-1080P?" "" "If your system doesn't have either, FFmpeg or Libav installed you won't" "be able to download videos in their highest available resolutions. 720P" "is the highest resolution available without FFmpeg or Libav. To be able" "to download videos in 4K-1080P, you need to open your package manager &" "install either the package 'ffmpeg' or the package 'libav-tools'. There" "is no need to install both of these packages. Hint: We prefer 'ffmpeg'." "" "" "Why can't I play my 4K-1080P video?" "" "You will need a decent computer for playing 4K-1080P videos. Check that" "your hardware is capable of playing 4K-1080P videos. If the hardware is" "adequate then make sure the driver for the graphics card is up-to-date." "Also you'll need a good software to play 4K-1080P videos. We prefer mpv" "on Linux, MPC-HC on Windows and mpv on OS X. In our experience mplayer2" "& VLC both have issues playing 4K-1080P videos downloaded from YouTube." "" "" "Press 'q' to return to PMYTD MENU" "" | less -RM
-MenU
+    printf "\033c"
+    type less >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD requires file pager \"less\" to display HELP document"
+    echo -e "Please install the package \"less\" via the package manager"
+    echo -e "For more information on \"less\" please visit it's homepage"
+    echo -e "http://www.greenwoodsoftware.com/less/"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    printf "%s\n" "Having problems downloading videos?" "" "YouTube and other video sharing sites continually change their APIs so it's" "advised to keep youtube-dl updated to the latest available version. You can" "check for updates via the PMYTD MENU by running 'Check for updates' option." "" "" "Is YouTube the only supported site?" "" "PMYTD is built with YouTube in mind so at present it only supports YouTube." "" "" "Why can't I get videos in 4K-1080P?" "" "If your system doesn't have either, FFmpeg or Libav installed you won't" "be able to download videos in their highest available resolutions. 720P" "is the highest resolution available without FFmpeg or Libav. To be able" "to download videos in 4K-1080P, you need to open your package manager &" "install either the package 'ffmpeg' or the package 'libav-tools'. There" "is no need to install both of these packages. Hint: We prefer 'ffmpeg'." "" "" "Why can't I play my 4K-1080P video?" "" "You will need a decent computer for playing 4K-1080P videos. Check that" "your hardware is capable of playing 4K-1080P videos. If the hardware is" "adequate then make sure the driver for the graphics card is up-to-date." "Also you'll need a good software to play 4K-1080P videos. We prefer mpv" "on Linux, MPC-HC on Windows and mpv on OS X. In our experience mplayer2" "& VLC both have issues playing 4K-1080P videos downloaded from YouTube." "" "" "Press 'q' to return to PMYTD MENU" "" | less -RM
+        MenU
 }
 function UpdatE (){
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-ytdlcv=$(youtube-dl --version)
-ytdllv_1=$(curl -sL -w "%{url_effective}\\n" "https://github.com/rg3/youtube-dl/releases/latest" -o /dev/null)
-ytdllv="${ytdllv_1##*/}"
-if [ "$ytdlcv" == "$ytdllv" ]; then
-printf "\033c"
-echo -e ""
-echo -e "Installed version of youtube-dl - $ytdlcv"
-echo -e "Available version of youtube-dl - $ytdllv"
-echo -e ""
-echo -e "youtube-dl is up-to-date"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-else
-printf "\033c"
-echo -e ""
-echo -e "Installed version of youtube-dl - $ytdlcv"
-echo -e "Available version of youtube-dl - $ytdllv"
-echo -e ""
-echo -e "youtube-dl update is available"
-echo -e ""
-echo -e "01 Update youtube-dl"
-echo -e "02 Back to main menu"
-echo -e ""
-echo -e "Enter your choice: "
-echo -e ""
-read -er choice
-case $choice in
-01 | 1)
-printf "\033c"
-flytdl=$(which youtube-dl)
-if [ -w "$flytdl" ]; then
-youtube-dl -U || { printf "\033c"; echo -e ""; echo -e "Failed to update youtube-dl"; echo -e "You can try to update later"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-else
-printf "\033c"
-echo -e ""
-echo -e "Superuser privilege required to update youtube-dl"
-echo -e "Select your prefered privilege escalation method: "
-echo -e ""
-echo -e "01 sudo"
-echo -e "02 su"
-echo -e ""
-echo -e "Enter your choice: "
-echo -e ""
-read -er choice
-case $choice in
-01 | 1)
-printf "\033c"
-sudo youtube-dl -U || { printf "\033c"; echo -e ""; echo -e "Failed to update youtube-dl"; echo -e "You can try to update later"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-02 | 2)
-printf "\033c"
-su -c 'youtube-dl -U' || { printf "\033c"; echo -e ""; echo -e "Failed to update youtube-dl"; echo -e "You can try to update later"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "\"$choice\" is an invalid option!!!"
-echo -e ""
-echo -e "Correct options to choose are from 1-2"
-echo -e ""
-echo -e "To pick \"sudo\" press \"1\" & hit \"Enter\" key"
-echo -e "To select \"su\" press \"2\" & hit \"Enter\" key"
-echo -e ""
-read -rsp $'Press any key to try again...\n' -n1
-UpdatE
-;;
-esac
-fi
-;;
-02 | 2)
-MenU
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "\"$choice\" is an invalid option!!!"
-echo -e ""
-echo -e "Correct options to choose are from 1-2"
-echo -e ""
-echo -e "To update \"youtube-dl\" press \"1\" & hit \"Enter\" key"
-echo -e "To go back to the menu press \"2\" & hit \"Enter\" key"
-echo -e ""
-read -rsp $'Press any key to try again...\n' -n1
-UpdatE
-;;
-esac
-fi
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    ytdlcv=$(youtube-dl --version)
+    ytdllv_1=$(curl -sL -w "%{url_effective}\\n" "https://github.com/rg3/youtube-dl/releases/latest" -o /dev/null)
+    ytdllv="${ytdllv_1##*/}"
+    if [ "$ytdlcv" == "$ytdllv" ]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "Installed version of youtube-dl - $ytdlcv"
+    echo -e "Available version of youtube-dl - $ytdllv"
+    echo -e ""
+    echo -e "youtube-dl is up-to-date"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    else
+        printf "\033c"
+    echo -e ""
+    echo -e "Installed version of youtube-dl - $ytdlcv"
+    echo -e "Available version of youtube-dl - $ytdllv"
+    echo -e ""
+    echo -e "youtube-dl update is available"
+    echo -e ""
+    echo -e "01 Update youtube-dl"
+    echo -e "02 Back to main menu"
+    echo -e ""
+    echo -e "Enter your choice: "
+    echo -e ""
+    read -er choice
+    case $choice in
+    01 | 1)
+    printf "\033c"
+    flytdl=$(which youtube-dl)
+    if [ -w "$flytdl" ]; then
+    youtube-dl -U || { printf "\033c"; echo -e ""; echo -e "Failed to update youtube-dl"; echo -e "You can try to update later"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    else
+        printf "\033c"
+    echo -e ""
+    echo -e "Superuser privilege required to update youtube-dl"
+    echo -e "Select your prefered privilege escalation method: "
+    echo -e ""
+    echo -e "01 sudo"
+    echo -e "02 su"
+    echo -e ""
+    echo -e "Enter your choice: "
+    echo -e ""
+    read -er choice
+    case $choice in
+    01 | 1)
+    printf "\033c"
+    sudo youtube-dl -U || { printf "\033c"; echo -e ""; echo -e "Failed to update youtube-dl"; echo -e "You can try to update later"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    02 | 2)
+    printf "\033c"
+    su -c 'youtube-dl -U' || { printf "\033c"; echo -e ""; echo -e "Failed to update youtube-dl"; echo -e "You can try to update later"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "\"$choice\" is an invalid option!!!"
+    echo -e ""
+    echo -e "Correct options to choose are from 1-2"
+    echo -e ""
+    echo -e "To pick \"sudo\" press \"1\" & hit \"Enter\" key"
+    echo -e "To select \"su\" press \"2\" & hit \"Enter\" key"
+    echo -e ""
+    read -rsp $'Press any key to try again...\n' -n1
+    UpdatE
+    ;;
+    esac
+    fi
+    ;;
+    02 | 2)
+    MenU
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "\"$choice\" is an invalid option!!!"
+    echo -e ""
+    echo -e "Correct options to choose are from 1-2"
+    echo -e ""
+    echo -e "To update \"youtube-dl\" press \"1\" & hit \"Enter\" key"
+    echo -e "To go back to the menu press \"2\" & hit \"Enter\" key"
+    echo -e ""
+    read -rsp $'Press any key to try again...\n' -n1
+    UpdatE
+    ;;
+    esac
+    fi
 }
 function AplS(){
-printf "\033c"
-type ffmpeg >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-type avconv >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "PMYTD requires either \"ffmpeg\" or \"avconv\" to extract MP3 from video"
-echo -e "It seems you don't have either of them installed presently on system"
-echo -e "Please install either \"ffmpeg\" or \"libav-tools\" from package manager"
-echo -e "Visit respective home pages of \"FFmpeg\" and \"Libav\" for further info"
-echo -e "https://ffmpeg.org/"
-echo -e "http://libav.org/"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-type ffmpeg >/dev/null 2>&1
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-ffmpeg -encoders | grep libmp3lame >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "MP3 encoding library \"libmp3lame\" not found"
-echo -e "Install the package \"lame\" via package manager"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-type avconv >/dev/null 2>&1
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-avconv -encoders | grep libmp3lame >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "MP3 encoding library \"libmp3lame\" not found"
-echo -e "Install the package \"lame\" via package manager"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-printf "%s\n" "" "Enter the youtube playlist link: " ""
-read -er link
-ytlnk1="https://www.youtube.com/playlist?list="
-ytlnk2="$link"
-ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*list=([a-zA-Z0-9\_\-]*).*/\1/')
-ytlnk="$ytlnk1$ytlnk3"
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
-RETVAL=$?
-case "$RETVAL" in
-0)
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format bestaudio/best --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Audio download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-else
-printf "\033c"
-echo -e ""
-echo -e "Failed to get required information on playlist link"
-echo -e "Make sure the playlist link exists and is reachable"
-echo -e "Check that the videos are available in your country"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "Your internet connection seems inactive or down"
-echo -e "PMYTD can't function without access to \"YouTube\""
-echo -e "Please check your internet settings & try later"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-esac
+    printf "\033c"
+    type ffmpeg >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    type avconv >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD requires either \"ffmpeg\" or \"avconv\" to extract MP3 from video"
+    echo -e "It seems you don't have either of them installed presently on system"
+    echo -e "Please install either \"ffmpeg\" or \"libav-tools\" from package manager"
+    echo -e "Visit respective home pages of \"FFmpeg\" and \"Libav\" for further info"
+    echo -e "https://ffmpeg.org/"
+    echo -e "http://libav.org/"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    type ffmpeg >/dev/null 2>&1
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    ffmpeg -encoders | grep libmp3lame >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "MP3 encoding library \"libmp3lame\" not found"
+    echo -e "Install the package \"lame\" via package manager"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    type avconv >/dev/null 2>&1
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    avconv -encoders | grep libmp3lame >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "MP3 encoding library \"libmp3lame\" not found"
+    echo -e "Install the package \"lame\" via package manager"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    printf "%s\n" "" "Enter the youtube playlist link: " ""
+    read -er link
+    ytlnk1="https://www.youtube.com/playlist?list="
+    ytlnk2="$link"
+    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*list=([a-zA-Z0-9\_\-]*).*/\1/')
+    ytlnk="$ytlnk1$ytlnk3"
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
+    RETVAL=$?
+    case "$RETVAL" in
+    0)
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format bestaudio/best --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Audio download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    else
+        printf "\033c"
+    echo -e ""
+    echo -e "Failed to get required information on playlist link"
+    echo -e "Make sure the playlist link exists and is reachable"
+    echo -e "Check that the videos are available in your country"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "Your internet connection seems inactive or down"
+    echo -e "PMYTD can't function without access to \"YouTube\""
+    echo -e "Please check your internet settings & try later"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    esac
 }
 function VplS(){
-printf "\033c"
-printf "%s\n" "" "Enter the youtube playlist link: " ""
-read -er link
-ytlnk1="https://www.youtube.com/playlist?list="
-ytlnk2="$link"
-ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*list=([a-zA-Z0-9\_\-]*).*/\1/')
-ytlnk="$ytlnk1$ytlnk3"
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
-RETVAL=$?
-case "$RETVAL" in
-0)
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "Failed to get required information on playlist link"
-echo -e "Make sure the playlist link exists and is reachable"
-echo -e "Check that the videos are available in your country"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-printf "\033c"
-type ffmpeg >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-type avconv >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format bestvideo+bestaudio/best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "Your internet connection seems inactive or down"
-echo -e "PMYTD can't function without access to \"YouTube\""
-echo -e "Please check your internet settings & try later"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-esac
+    printf "\033c"
+    printf "%s\n" "" "Enter the youtube playlist link: " ""
+    read -er link
+    ytlnk1="https://www.youtube.com/playlist?list="
+    ytlnk2="$link"
+    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*list=([a-zA-Z0-9\_\-]*).*/\1/')
+    ytlnk="$ytlnk1$ytlnk3"
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
+    RETVAL=$?
+    case "$RETVAL" in
+    0)
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "Failed to get required information on playlist link"
+    echo -e "Make sure the playlist link exists and is reachable"
+    echo -e "Check that the videos are available in your country"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    printf "\033c"
+    type ffmpeg >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    type avconv >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --yes-playlist --ignore-errors --format bestvideo+bestaudio/best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "Your internet connection seems inactive or down"
+    echo -e "PMYTD can't function without access to \"YouTube\""
+    echo -e "Please check your internet settings & try later"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    esac
 }
 function AudiO (){
-printf "\033c"
-type ffmpeg >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-type avconv >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "PMYTD requires either \"ffmpeg\" or \"avconv\" to extract MP3 from video"
-echo -e "It seems you don't have either of them installed presently on system"
-echo -e "Please install either \"ffmpeg\" or \"libav-tools\" from package manager"
-echo -e "Visit respective home pages of \"FFmpeg\" and \"Libav\" for further info"
-echo -e "https://ffmpeg.org/"
-echo -e "http://libav.org/"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-type ffmpeg >/dev/null 2>&1
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-ffmpeg -encoders | grep libmp3lame >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "MP3 encoding library \"libmp3lame\" not found"
-echo -e "Install the package \"lame\" via package manager"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-type avconv >/dev/null 2>&1
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-avconv -encoders | grep libmp3lame >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "MP3 encoding library \"libmp3lame\" not found"
-echo -e "Install the package \"lame\" via package manager"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-printf "%s\n" "" "Enter the youtube video link: " ""
-read -er link
-ytlnk1="https://www.youtube.com/watch?v="
-ytlnk2="$link"
-ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*v=([a-zA-Z0-9\_\-]*).*/\1/')
-ytlnk="$ytlnk1$ytlnk3"
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
-RETVAL=$?
-case "$RETVAL" in
-0)
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format bestaudio/best --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Audio download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-else
-printf "\033c"
-echo -e ""
-echo -e "Failed to get required information on video link"
-echo -e "Make sure the video link exists and is reachable"
-echo -e "Check that the video is available in your region"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "Your internet connection seems inactive or down"
-echo -e "PMYTD can't function without access to \"YouTube\""
-echo -e "Please check your internet settings & try later"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-esac
+    printf "\033c"
+    type ffmpeg >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    type avconv >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD requires either \"ffmpeg\" or \"avconv\" to extract MP3 from video"
+    echo -e "It seems you don't have either of them installed presently on system"
+    echo -e "Please install either \"ffmpeg\" or \"libav-tools\" from package manager"
+    echo -e "Visit respective home pages of \"FFmpeg\" and \"Libav\" for further info"
+    echo -e "https://ffmpeg.org/"
+    echo -e "http://libav.org/"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    type ffmpeg >/dev/null 2>&1
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    ffmpeg -encoders | grep libmp3lame >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "MP3 encoding library \"libmp3lame\" not found"
+    echo -e "Install the package \"lame\" via package manager"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    type avconv >/dev/null 2>&1
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    avconv -encoders | grep libmp3lame >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "MP3 encoding library \"libmp3lame\" not found"
+    echo -e "Install the package \"lame\" via package manager"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    printf "%s\n" "" "Enter the youtube video link: " ""
+    read -er link
+    ytlnk1="https://www.youtube.com/watch?v="
+    ytlnk2="$link"
+    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*v=([a-zA-Z0-9\_\-]*).*/\1/')
+    ytlnk="$ytlnk1$ytlnk3"
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
+    RETVAL=$?
+    case "$RETVAL" in
+    0)
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format bestaudio/best --extract-audio --audio-format "mp3" --audio-quality 0 --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Audio download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    else
+        printf "\033c"
+    echo -e ""
+    echo -e "Failed to get required information on video link"
+    echo -e "Make sure the video link exists and is reachable"
+    echo -e "Check that the video is available in your region"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "Your internet connection seems inactive or down"
+    echo -e "PMYTD can't function without access to \"YouTube\""
+    echo -e "Please check your internet settings & try later"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    esac
 }
 function FormaT (){
-printf "\033c"
-printf "%s\n" "" "Enter the youtube video link: " ""
-read -er link
-ytlnk1="https://www.youtube.com/watch?v="
-ytlnk2="$link"
-ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*v=([a-zA-Z0-9\_\-]*).*/\1/')
-ytlnk="$ytlnk1$ytlnk3"
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
-RETVAL=$?
-case "$RETVAL" in
-0)
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
-RETVAL=$?
-if [[ "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "01 Automatically download video in the best available quality"
-echo -e "02 Manually pick video resolution-quality-format and download"
-echo -e ""
-echo -e "Enter your choice: "
-echo -e ""
-read -er choice
-case $choice in
-01 | 1)
-printf "\033c"
-type ffmpeg >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-type avconv >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-fi
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format bestvideo+bestaudio --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-02 | 2)
-printf "\033c"
-youtube-dl --ignore-config --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --list-formats "$ytlnk" | sed -e '/only/d' -e '0,/Available/d' || { printf "\033c"; echo -e ""; echo -e "Failed to get required information on video link"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-printf "%s\n" "" "Enter your desired video format code from the above list: " ""
-read -er list
-printf "\033c"
-youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format "$list" --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
-echo -e ""
-echo -e "Successfully completed the download task"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "\"$choice\" is an invalid option!!!"
-echo -e ""
-echo -e "Correct options to choose are from 1-2"
-echo -e ""
-echo -e "To download video with best quality press \"1\" & hit \"Enter\" key"
-echo -e "To manually select video resolution press \"2\" & hit \"Enter\" key"
-echo -e ""
-read -rsp $'Press any key to try again...\n' -n1
-FormaT
-;;
-esac
-else
-printf "\033c"
-echo -e ""
-echo -e "Failed to get required information on video link"
-echo -e "Make sure the video link exists and is reachable"
-echo -e "Check that the video is available in your region"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-fi
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "Your internet connection seems inactive or down"
-echo -e "PMYTD can't function without access to \"YouTube\""
-echo -e "Please check your internet settings & try later"
-echo -e ""
-read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
-MenU
-;;
-esac
+    printf "\033c"
+    printf "%s\n" "" "Enter the youtube video link: " ""
+    read -er link
+    ytlnk1="https://www.youtube.com/watch?v="
+    ytlnk2="$link"
+    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*v=([a-zA-Z0-9\_\-]*).*/\1/')
+    ytlnk="$ytlnk1$ytlnk3"
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
+    RETVAL=$?
+    case "$RETVAL" in
+    0)
+    printf "\033c"
+    wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "$ytlnk" -O /dev/null
+    RETVAL=$?
+    if [[ "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    echo -e ""
+    echo -e "01 Automatically download video in the best available quality"
+    echo -e "02 Manually pick video resolution-quality-format and download"
+    echo -e ""
+    echo -e "Enter your choice: "
+    echo -e ""
+    read -er choice
+    case $choice in
+    01 | 1)
+    printf "\033c"
+    type ffmpeg >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    type avconv >/dev/null 2>&1
+    RETVAL=$?
+    if [[ ! "$RETVAL" == 0 ]]; then
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format best --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    fi
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format bestvideo+bestaudio --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    02 | 2)
+    printf "\033c"
+    youtube-dl --ignore-config --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --list-formats "$ytlnk" | sed -e '/only/d' -e '0,/Available/d' || { printf "\033c"; echo -e ""; echo -e "Failed to get required information on video link"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    printf "%s\n" "" "Enter your desired video format code from the above list: " ""
+    read -er list
+    printf "\033c"
+    youtube-dl --ignore-config --continue --console-title --no-warnings --user-agent "Mozilla/5.0 Gecko/20100101" --no-check-certificate --youtube-skip-dash-manifest --no-playlist --format "$list" --output "/home/$USER/Downloads/%(title)s.%(ext)s" "$ytlnk" --restrict-filenames || { printf "\033c"; echo -e ""; echo -e "Video download has failed, Something went wrong!"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
+    echo -e ""
+    echo -e "Successfully completed the download task"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "\"$choice\" is an invalid option!!!"
+    echo -e ""
+    echo -e "Correct options to choose are from 1-2"
+    echo -e ""
+    echo -e "To download video with best quality press \"1\" & hit \"Enter\" key"
+    echo -e "To manually select video resolution press \"2\" & hit \"Enter\" key"
+    echo -e ""
+    read -rsp $'Press any key to try again...\n' -n1
+    FormaT
+    ;;
+    esac
+    else
+        printf "\033c"
+    echo -e ""
+    echo -e "Failed to get required information on video link"
+    echo -e "Make sure the video link exists and is reachable"
+    echo -e "Check that the video is available in your region"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "Your internet connection seems inactive or down"
+    echo -e "PMYTD can't function without access to \"YouTube\""
+    echo -e "Please check your internet settings & try later"
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    ;;
+    esac
 }
 function MenU (){
-printf "\033c"
-echo -e ""
-echo -e "*************** PMYTD<>MENU ***************"
-echo -e ""
-echo -e "01 Download a video"
-echo -e "02 Download & extract audio from a video"
-echo -e "03 Download an entire youtube playlist"
-echo -e "04 Download & extract audio from a playlist"
-echo -e "05 Check for updates"
-echo -e "06 Help"
-echo -e "07 Quit PMYTD"
-echo -e ""
-echo -e "Enter your choice: "
-echo -e ""
-read -er choice
-case $choice in
-01 | 1)
-FormaT
-;;
-02 | 2)
-AudiO
-;;
-03 | 3)
-VplS
-;;
-04 | 4)
-AplS
-;;
-05 | 5)
-UpdatE
-;;
-06 | 6)
-HelP
-;;
-07 | 7)
-ByE
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "\"$choice\" is an invalid option!!!"
-echo -e ""
-echo -e "Correct options to choose are from 1-2-3-4-5-6-7"
-echo -e ""
-echo -e "To download a video press \"1\" & hit \"Enter\" key"
-echo -e "To download only the audio press \"2\" & hit \"Enter\" key"
-echo -e "To download an entire playlist press  \"3\" & hit \"Enter\" key"
-echo -e "To download only the audio from a playlist press \"4\" & hit \"Enter\" key"
-echo -e "To check for youtube-dl updates press \"5\" & hit \"Enter\" key"
-echo -e "To get help on using PMYTD press \"6\" & hit \"Enter\" key"
-echo -e "To exit from PMYTD press \"7\" & hit \"Enter\" key"
-echo -e ""
-read -rsp $'Press any key to try again...\n' -n1
-MenU
-;;
-esac
+    printf "\033c"
+    echo -e "** PMYTD<>MENU ****************************"
+    echo -e ""
+    echo -e "01 Download a video"
+    echo -e "02 Download & extract audio from a video"
+    echo -e "03 Download an entire youtube playlist"
+    echo -e "04 Download & extract audio from a playlist"
+    echo -e "05 Check for updates"
+    echo -e "06 Help"
+    echo -e "07 Quit PMYTD"
+    echo -e ""
+    echo -e "*******************************************"
+    echo -e "   Enter your choice: "
+    read -er choice
+    case $choice in
+    01 | 1)
+    FormaT
+    ;;
+    02 | 2)
+    AudiO
+    ;;
+    03 | 3)
+    VplS
+    ;;
+    04 | 4)
+    AplS
+    ;;
+    05 | 5)
+    UpdatE
+    ;;
+    06 | 6)
+    HelP
+    ;;
+    07 | 7)
+    ByE
+    ;;
+    *)
+    printf "\033c"
+    echo -e ""
+    echo -e "\"$choice\" is an invalid option!!!"
+    echo -e ""
+    echo -e "Correct options to choose are from 1-2-3-4-5-6-7"
+    echo -e ""
+    echo -e "To download a video press \"1\" & hit \"Enter\" key"
+    echo -e "To download only the audio press \"2\" & hit \"Enter\" key"
+    echo -e "To download an entire playlist press  \"3\" & hit \"Enter\" key"
+    echo -e "To download only the audio from a playlist press \"4\" & hit \"Enter\" key"
+    echo -e "To check for youtube-dl updates press \"5\" & hit \"Enter\" key"
+    echo -e "To get help on using PMYTD press \"6\" & hit \"Enter\" key"
+    echo -e "To exit from PMYTD  press \"7\" & hit \"Enter\" key"
+    echo -e ""
+    read -rsp $'Press any key to try again...\n' -n1
+    MenU
+    ;;
+    esac
 }
 function DepChk (){
-printf "\033c"
-type python >/dev/null 2>&1 || { printf "\033c"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; echo -e '\e[38;5;82m'"A required PMYTD dependency \"Python\" is unavailable"; echo -e '\e[38;5;82m'"\"Python\" is available for almost all linux distros."; echo -e '\e[38;5;82m'"Please install \"python\" using your package manager."; echo -e '\e[38;5;82m'"Please visit the homepage of \"Python\" for more info"; echo -e '\e[38;5;82m'"https://www.python.org/"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; tput sgr0; exit 1; }
-type curl >/dev/null 2>&1 || { printf "\033c"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; echo -e '\e[38;5;82m'"A required PMYTD dependency \"cURL\" is unavailable"; echo -e '\e[38;5;82m'"\"cURL\" is available for almost all linux distros."; echo -e '\e[38;5;82m'"Please install \"curl\" using your package manager."; echo -e '\e[38;5;82m'"Please visit the homepage of \"cURL\" for more info"; echo -e '\e[38;5;82m'"https://curl.haxx.se/"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; tput sgr0; exit 1; }
-type wget >/dev/null 2>&1 || { printf "\033c"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; echo -e '\e[38;5;82m'"A required PMYTD dependency \"Wget\" is unavailable"; echo -e '\e[38;5;82m'"\"Wget\" is available for almost all linux distros."; echo -e '\e[38;5;82m'"Please install \"wget\" using your package manager."; echo -e '\e[38;5;82m'"Please visit the homepage of \"Wget\" for more info"; echo -e '\e[38;5;82m'"https://www.gnu.org/software/wget/"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; tput sgr0; exit 1; }
-type youtube-dl >/dev/null 2>&1
-RETVAL=$?
-if [[ ! "$RETVAL" == 0 ]]; then
-printf "\033c"
-echo -e ""
-echo -e "PMYTD requires youtube-dl but it's unavailable"
-echo -e ""
-echo -e "Press \"Y\" to download and install youtube-dl"
-echo -e "Press \"N\" to leave without making any change"
-echo -e ""
-echo -e "Enter your choice: "
-echo -e ""
-read -er choice
-case $choice in
-Y | y)
-printf "\033c"
-echo -e ""
-echo -e "Superuser privileges needed to install youtube-dl"
-echo -e "Select your prefered privilege escalation method: "
-echo -e ""
-echo -e "01 sudo"
-echo -e "02 su"
-echo -e ""
-echo -e "Enter your choice: "
-echo -e ""
-read -er choice
-case $choice in
-01 | 1)
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; exit 1; }
-sudo sh -c 'curl --location "https://yt-dl.org/downloads/latest/youtube-dl" --output /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl' || { printf "\033c"; echo -e ""; echo -e "Failed to install youtube-dl"; echo -e "Please try the install later"; echo -e ""; exit 1; }
-MenU
-;;
-02 | 2)
-printf "\033c"
-wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; exit 1; }
-su -c 'curl --location "https://yt-dl.org/downloads/latest/youtube-dl" --output /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl' || { printf "\033c"; echo -e ""; echo -e "Failed to install youtube-dl"; echo -e "Please try the install later"; echo -e ""; exit 1; }
-MenU
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "\"$choice\" is an invalid option!!!"
-echo -e ""
-echo -e "Correct options to choose are from 1-2"
-echo -e ""
-echo -e "To pick \"sudo\" press \"1\" & hit \"Enter\" key"
-echo -e "To select \"su\" press \"2\" & hit \"Enter\" key"
-echo -e ""
-read -rsp $'Press any key to try again...\n' -n1
-DepChk
-;;
-esac
-;;
-N | n)
-printf "\033c"
-exit 1
-;;
-*)
-printf "\033c"
-echo -e ""
-echo -e "\"$choice\" is an invalid option!!!"
-echo -e ""
-echo -e "Correct options to choose are from Y-N"
-echo -e ""
-echo -e "To install \"youtube-dl\" press \"Y\" & hit \"Enter\" key"
-echo -e "To leave \"PMYTD\" script press \"N\" & hit \"Enter\" key"
-echo -e ""
-read -rsp $'Press any key to try again...\n' -n1
-DepChk
-;;
-esac
-else
-MenU
-fi
-}
-while :
-do
-DepChk
-done
+    printf "\033c"
+    type python >/dev/null 2>&1 || { printf "\033c"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; echo -e '\e[38;5;82m'"A required PMYTD dependency \"Python\" is unavailable"; echo -e '\e[38;5;82m'"\"Python\" is available for almost all linux distros."; echo -e '\e[38;5;82m'"Please install \"python\" using your package manager."; echo -e '\e[38;5;82m'"Please visit the homepage of \"Python\" for more info"; echo -e '\e[38;5;82m'"https://www.python.org/"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; tput sgr0; exit 1; }
+        type curl >/dev/null 2>&1 || { printf "\033c"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; echo -e '\e[38;5;82m'"A required PMYTD dependency \"cURL\" is unavailable"; echo -e '\e[38;5;82m'"\"cURL\" is available for almost all linux distros."; echo -e '\e[38;5;82m'"Please install \"curl\" using your package manager."; echo -e '\e[38;5;82m'"Please visit the homepage of \"cURL\" for more info"; echo -e '\e[38;5;82m'"https://curl.haxx.se/"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; tput sgr0; exit 1; }
+            type wget >/dev/null 2>&1 || { printf "\033c"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; echo -e '\e[38;5;82m'"A required PMYTD dependency \"Wget\" is unavailable"; echo -e '\e[38;5;82m'"\"Wget\" is available for almost all linux distros."; echo -e '\e[38;5;82m'"Please install \"wget\" using your package manager."; echo -e '\e[38;5;82m'"Please visit the homepage of \"Wget\" for more info"; echo -e '\e[38;5;82m'"https://www.gnu.org/software/wget/"; echo -e ""; for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; echo -e ""; tput sgr0; exit 1; }
+                type youtube-dl >/dev/null 2>&1
+                RETVAL=$?
+                if [[ ! "$RETVAL" == 0 ]]; then
+                printf "\033c"
+                echo -e ""
+                echo -e "PMYTD requires youtube-dl but it's unavailable"
+                echo -e ""
+                echo -e "Press \"Y\" to download and install youtube-dl"
+                echo -e "Press \"N\" to leave without making any change"
+                echo -e ""
+                echo -e "Enter your choice: "
+                echo -e ""
+                read -er choice
+                case $choice in
+                Y | y)
+                printf "\033c"
+                echo -e ""
+                echo -e "Superuser privileges needed to install youtube-dl"
+                echo -e "Select your prefered privilege escalation method: "
+                echo -e ""
+                echo -e "01 sudo"
+                echo -e "02 su"
+                echo -e ""
+                echo -e "Enter your choice: "
+                echo -e ""
+                read -er choice
+                case $choice in
+                01 | 1)
+                printf "\033c"
+                wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; exit 1; }
+                sudo sh -c 'curl --location "https://yt-dl.org/downloads/latest/youtube-dl" --output /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl' || { printf "\033c"; echo -e ""; echo -e "Failed to install youtube-dl"; echo -e "Please try the install later"; echo -e ""; exit 1; }
+                MenU
+                ;;
+                02 | 2)
+                printf "\033c"
+                wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; exit 1; }
+                su -c 'curl --location "https://yt-dl.org/downloads/latest/youtube-dl" --output /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl' || { printf "\033c"; echo -e ""; echo -e "Failed to install youtube-dl"; echo -e "Please try the install later"; echo -e ""; exit 1; }
+                MenU
+                ;;
+                *)
+                printf "\033c"
+                echo -e ""
+                echo -e "\"$choice\" is an invalid option!!!"
+                echo -e ""
+                echo -e "Correct options to choose are from 1-2"
+                echo -e ""
+                echo -e "To pick \"sudo\" press \"1\" & hit \"Enter\" key"
+                echo -e "To select \"su\" press \"2\" & hit \"Enter\" key"
+                echo -e ""
+                read -rsp $'Press any key to try again...\n' -n1
+                DepChk
+                ;;
+                esac
+                ;;
+                N | n)
+                printf "\033c"
+                exit 1
+                ;;
+                *)
+                printf "\033c"
+                echo -e ""
+                echo -e "\"$choice\" is an invalid option!!!"
+                echo -e ""
+                echo -e "Correct options to choose are from Y-N"
+                echo -e ""
+                echo -e "To install \"youtube-dl\" press \"Y\" & hit \"Enter\" key"
+                echo -e "To leave \"PMYTD\" script press \"N\" & hit \"Enter\" key"
+                echo -e ""
+                read -rsp $'Press any key to try again...\n' -n1
+                DepChk
+                ;;
+                esac
+                else
+                    MenU
+                fi
+            }
+            while :
+                do
+            DepChk
+            done
+            
