@@ -33,8 +33,7 @@ function UpdatE (){
     printf "\033c"
     wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "https://rg3.github.io/youtube-dl/" -O /dev/null || { printf "\033c"; echo -e ""; echo -e "Can't connect to youtube-dl download server site"; echo -e "Make sure the internet connection is up & active"; echo -e ""; read -rsp $'Press any key to return to PMYTD MENU...\n' -n1; MenU; }
     ytdlcv=$(youtube-dl --version)
-    ytdllv_1=$(curl -sL -w "%{url_effective}\\n" "https://github.com/rg3/youtube-dl/releases/latest" -o /dev/null)
-    ytdllv="${ytdllv_1##*/}"
+    ytdllv=$(wget -O- -q "https://rg3.github.io/youtube-dl/update/LATEST_VERSION")
     if [ "$ytdlcv" == "$ytdllv" ]; then
     printf "\033c"
     echo -e ""
