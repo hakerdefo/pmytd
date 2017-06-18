@@ -51,7 +51,6 @@ This work (<span property="dct:title">pmytd</span>, by [<span property="dct:titl
 [youtube-dl]:http://rg3.github.io/youtube-dl/
 [Python]:https://www.python.org
 [Wget]:https://www.gnu.org/software/wget/
-[cURL]:http://curl.haxx.se
 [FFmpeg]:https://ffmpeg.org/
 [Libav]:https://libav.org/
 [pmytd-master]:https://github.com/hakerdefo/pmytd/archive/master.zip
