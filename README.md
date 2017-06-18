@@ -18,13 +18,12 @@ pmytd needs to have following applications installed in order to function,
 * [youtube-dl] - Small command-line program to download videos from YouTube and other video sharing websites. youtube-dl is available in repos of some distributions but available version most likely would be severly outdated. If you have installed youtube-dl using your package manager, please update it via the "Check for updates" option in pmytd menu. pmytd will help you install the current version of youtube-dl if it's not installed on your system.
 * [Python] - Python is a widely used general-purpose, high-level programming language. Python should most likely be installed by default on most linux distributions. If it is not installed please use your distribution's package manager and install it.
 * [Wget] - GNU Wget can be used for retrieving files using HTTP, HTTPS and FTP, the most widely-used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals without X-Windows support, etc. Wget can be installed using your distribution's package manager.
-* [cURL] - cURL is a command line tool and library for transferring data with URL syntax. cURL is available in repositories of almost every Linux distribution so you can install curl easily via your package manager.
 * [FFmpeg] or [Libav] - You will need either FFmpeg or Libav if you want to download videos in 4K or 1080P resolutions or if you wish to extract audio (MP3) from videos. If you want to download videos in 720P or lower resolutions and don't need to extract audio as MP3 you won't need FFmpeg-Libav. FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video. FFmpeg should already be installed by default on some distributions. If not install it via your distribution's package manager. Libav provides cross-platform tools and libraries to convert, manipulate and stream a wide range of multimedia formats and protocols. If you want to use Libav with pmytd, please install package "libav-tools" using your distribution's package manager.
 
 
 ### Installation :
 
-Download [pmytd-master] zip, extract its contents and copy "pmytd" file to "/usr/local/bin/" directory,
+Download [pmytd-master] zip, extract its contents and copy **pmytd** file to **/usr/local/bin/** directory,
 ```sh
 $ sudo cp pmytd /usr/local/bin/
 ```
