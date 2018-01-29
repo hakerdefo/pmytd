@@ -3,8 +3,8 @@
 function ByE (){
     printf "\033c"
     echo -e ""
-    echo -e '\E[1;31;40m'"It's "'\E[1;32;40m'"funny "'\E[1;33;40m'"how"'\E[1;35;40m'" the"'\E[1;36;40m'" colors"'\E[1;31;40m'" of"'\E[1;32;40m'" the"'\E[1;33;40m'" real"'\E[1;35;40m'" world"'\E[1;36;40m'" only"
-    echo -e '\E[1;31;40m'"seem"'\E[1;32;40m'" really"'\E[1;33;40m'" real"'\E[1;36;40m'" when"'\E[1;31;40m'" you"'\E[1;32;40m'" viddy"'\E[1;33;40m'" them"'\E[1;35;40m'" on"'\E[1;36;40m'" the"'\E[1;31;40m'" screen"
+    echo -e '\E[1;31m'"It's "'\E[1;32m'"funny "'\E[1;33m'"how"'\E[1;35m'" the"'\E[1;36m'" colors"'\E[1;31m'" of"'\E[1;32m'" the"'\E[1;33m'" real"'\E[1;35m'" world"'\E[1;36m'" only"
+    echo -e '\E[1;31m'"seem"'\E[1;32m'" really"'\E[1;33m'" real"'\E[1;36m'" when"'\E[1;31m'" you"'\E[1;32m'" viddy"'\E[1;33m'" them"'\E[1;35m'" on"'\E[1;36m'" the"'\E[1;31m'" screen"
     tput sgr0
     echo -e ""
     echo -e "Alex, A Clockwork Orange"
