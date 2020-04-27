@@ -175,10 +175,22 @@ function AplS(){
     printf "\033c"
     printf "%s\n" "" "Enter the youtube playlist link: " ""
     read -er link
-    ytlnk1="https://www.youtube.com/playlist?list="
-    ytlnk2="$link"
-    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*list=([a-zA-Z0-9\_\-]*).*/\1/')
-    ytlnk="$ytlnk1$ytlnk3"
+    yt1="www.youtube.com"
+    yt2="youtu.be"
+    ytlnk1=$(echo "$link" | sed -e "s/[^/]*\/\/\([^@]*@\)\?\([^:/]*\).*/\2/")
+    if [ "$ytlnk1" == "$yt1" ]; then
+    ytlnk="$link"
+    elif [ "$ytlnk1" == "$yt2" ]; then
+    ytlnk="$link"
+    else
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD only works with YouTube URLs for the time being."
+    echo -e "Short URLs are also not allowed due to security fears."
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
     printf "\033c"
     wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
     RETVAL=$?
@@ -221,10 +233,22 @@ function VplS(){
     printf "\033c"
     printf "%s\n" "" "Enter the youtube playlist link: " ""
     read -er link
-    ytlnk1="https://www.youtube.com/playlist?list="
-    ytlnk2="$link"
-    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*list=([a-zA-Z0-9\_\-]*).*/\1/')
-    ytlnk="$ytlnk1$ytlnk3"
+    yt1="www.youtube.com"
+    yt2="youtu.be"
+    ytlnk1=$(echo "$link" | sed -e "s/[^/]*\/\/\([^@]*@\)\?\([^:/]*\).*/\2/")
+    if [ "$ytlnk1" == "$yt1" ]; then
+    ytlnk="$link"
+    elif [ "$ytlnk1" == "$yt2" ]; then
+    ytlnk="$link"
+    else
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD only works with YouTube URLs for the time being."
+    echo -e "Short URLs are also not allowed due to security fears."
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
     printf "\033c"
     wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
     RETVAL=$?
@@ -318,10 +342,22 @@ function AudiO (){
     printf "\033c"
     printf "%s\n" "" "Enter the youtube video link: " ""
     read -er link
-    ytlnk1="https://www.youtube.com/watch?v="
-    ytlnk2="$link"
-    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*v=([a-zA-Z0-9\_\-]*).*/\1/')
-    ytlnk="$ytlnk1$ytlnk3"
+    yt1="www.youtube.com"
+    yt2="youtu.be"
+    ytlnk1=$(echo "$link" | sed -e "s/[^/]*\/\/\([^@]*@\)\?\([^:/]*\).*/\2/")
+    if [ "$ytlnk1" == "$yt1" ]; then
+    ytlnk="$link"
+    elif [ "$ytlnk1" == "$yt2" ]; then
+    ytlnk="$link"
+    else
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD only works with YouTube URLs for the time being."
+    echo -e "Short URLs are also not allowed due to security fears."
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
     printf "\033c"
     wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
     RETVAL=$?
@@ -364,10 +400,22 @@ function FormaT (){
     printf "\033c"
     printf "%s\n" "" "Enter the youtube video link: " ""
     read -er link
-    ytlnk1="https://www.youtube.com/watch?v="
-    ytlnk2="$link"
-    ytlnk3=$(python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])" "$ytlnk2" | sed -r 's/.*v=([a-zA-Z0-9\_\-]*).*/\1/')
-    ytlnk="$ytlnk1$ytlnk3"
+    yt1="www.youtube.com"
+    yt2="youtu.be"
+    ytlnk1=$(echo "$link" | sed -e "s/[^/]*\/\/\([^@]*@\)\?\([^:/]*\).*/\2/")
+    if [ "$ytlnk1" == "$yt1" ]; then
+    ytlnk="$link"
+    elif [ "$ytlnk1" == "$yt2" ]; then
+    ytlnk="$link"
+    else
+    printf "\033c"
+    echo -e ""
+    echo -e "PMYTD only works with YouTube URLs for the time being."
+    echo -e "Short URLs are also not allowed due to security fears."
+    echo -e ""
+    read -rsp $'Press any key to return to PMYTD MENU...\n' -n1
+    MenU
+    fi
     printf "\033c"
     wget --spider --user-agent="Mozilla/5.0 Gecko/20100101" --timeout=30 -q "www.youtube.com" -O /dev/null
     RETVAL=$?
