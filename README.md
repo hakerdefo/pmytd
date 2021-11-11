@@ -42,6 +42,15 @@ Open terminal, run pmytd, feed it a video link, enjoy.
 YouTube and other video sharing sites continually change their APIs. So it is advised to keep youtube-dl updated to latest version. You can easily update youtube-dl via "Check for updates" option in pmytd menu.
 
 
+### Support :
+
+If you like **pmytd**, please consider supporting it, even the smallest contribution goes a long way. It is quick & easy via PayPal, Buy Me a Coffee or Liberapay:  
+
+[![Support via PayPal](https://cdn.jsdelivr.net/gh/twolfson/paypal-github-button@1.0.0/dist/button.svg)](https://paypal.me/hakerdefo)  
+[!["Buy Me A Coffee"](https://user-images.githubusercontent.com/1376749/120938564-50c59780-c6e1-11eb-814f-22a0399623c5.png)](https://www.buymeacoffee.com/hakerdefo)  
+[![Support via Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/hakerdefo/donate)  
+
+
 ### License :
 
 [![Public Domain Mark](http://i.creativecommons.org/p/mark/1.0/88x31.png)](http://creativecommons.org/publicdomain/mark/1.0/)  
